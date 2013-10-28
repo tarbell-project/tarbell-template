@@ -93,7 +93,7 @@
       <div>
         <strong><p id="passcheck1" class="crypt-text">How many supernova would it take to guess your password?</p></strong>
 
-        <p id="passcheck2" class="crypt-text">In Applied Cryptography, Bruce Schneier described an "ideal" computer - one that operated at the extreme physical limits of computation, using the minimum amount of energy the universe could possibly allow to represent a single bit. This computer would use the fastest technique allowed by the laws of the universe to guess passwords.</p>
+        <p id="passcheck2" class="crypt-text">In <i>Applied Cryptography</i>, Bruce Schneier described an "ideal" computer - one that operated at the extreme physical limits of computation, using the minimum amount of energy the universe could possibly allow to represent a single bit. This computer would use the fastest technique allowed by the laws of the universe to guess passwords.</p>
 
         <p id="passcheck3" class="crypt-text">How long do you think it would take such a computer to brute-force your password? How about merely the world's current (publicly-known) fastest supercomputer, the Tianhe-2 (http://www.top500.org/system/177999)?</p>
 
@@ -111,7 +111,9 @@
 
   <p><span id="body12a" class="crypt-text">So long passwords are ideal, but they're pretty tough to remember. It's hard enough to recall something like Htu67%c* - it's totally unrealistic to expect people to remember something twice as long and just that arbitrary. Happily, with a long enough phrase you can sacrifice some randomness and make a secure password easy to remember. Randall Monroe </span><a id="body12b" class="crypt-text" href="http://xkcd.com/936/">proposed one technique in his webcomic, xkcd</a><span id="body12c" class="crypt-text">: just pick four random words and use them as your password. "Join symphony forget blankets" is actually a pretty secure password, and much easier to remember than a much less secure, randomly-generated string like "1&hT^s5%".</span></p>
 
-  <p id="body13" class="crypt-text">Add: password management services</p>
+  <p id="body13" class="crypt-text">And of course, don't reuse any of these fiendishly complex long strings of random text, in case they get stolen from one website, leaving your accounts on others vulnerable. So how can you possibly keep all of them straight, short of writing them down or getting a truly unholy number of tattoos? One option is to use a password manager like 1Password or Lastpass. Their browser extensions fill in your passwords for you, and automatically generate new ones of whatever complexity you prefer.</p>
+
+  <p id="body14" class="crypt-text">While it might sound dangerous to store all your passwords with any one company, many of the technically-inclined and security-conscious people I spoke to were more than comfortable with the arrangement. Formidable IT security is a craft, and most companies who don't specialize in it aren't likely to do it perfectly. It's obviously not without risk to store all your passwords - or all your anything - in one place. But the benefits to your security of using a password manager to store a variety of strong passwords likely far outweigh the risks of using a centralized service to do so.</p>
 
   <div class="pull-out">
     <p>
@@ -168,6 +170,14 @@
   <h2 id="heading4" class="crypt-text">How to minimize your exposure</h2>
   <p id="body8" class="crypt-text">Why staying patched/up-to-date is important, what it won't protect against, what a firewall is and how to enable it in OS X and Windows, link to free anti-virus and anti-malware stuff, more explanation of what NSA seems to be able to do and what they seem not to be able to do</p>
 
+  <p id="patching1" class="crypt-text">Perhaps the most boring advice is also the most important: before you do anything else, before you read up on obscure encryption algorithms or start putting your phones in the freezer to evade governments remotely turning on the microphone (really!), make sure your computer, phone and any other computing devices you own are up-to-date with the latest software patches. One of the easiest and most effective means for any attacker to take control of your equipment and access your secrets is to sneak in through an unpatched security hole.</p>
+
+  <p id="patching2" class="crypt-text">Many of the most sophisticated attackers - large governments and criminal networks - are able to purchase or create so-called 0-day vulnerabilities, previously-undisclosed security flaws that can leave your computer open to intrusion. (On the day a vulnerability is disclosed, it becomes a 1-day exploit, and the next day becomes a 2-day exploit, and so on.) 0-day vulnerabilities are heavily prized because they're almost impossible to prevent: you can't fix a hole you didn't know was there in the first place.</p>
+
+  <p id="patching3" class="crypt-text">But 0-day vulnerabilities are pretty rare, and most attackers aren't the sort of highly-sophisticated entities that have enormous research departments and budgets with which to discover them. Much more common, and therefore more dangerous, are the legions of small bugs that cause tiny security flaws in essentially every piece of software on your machine. Once you trust an app - either by giving it your data, or by getting used to seeing it ask you for permission before it does something - you're vulnerable to bugs in that software. Keeping it patched and up-to-date is therefore extremely important.</p>
+
+  <p id="patching4" class="crypt-text">Some software handles this automatically. For instance, Google's Chrome Internet browser regularly downloads updates, and waits to install them whenever you exit the program. Similarly, Apple's OS X Software Update system regularly checks for and downloads patches, though you typically have to restart your computer before many of the most important ones take effect. Microsoft's Windows Update goes a step farther, and automatically downloads and installs new fixes as they become available, if you choose to let it.</p>
+
   <div class="pull-out">
     <p>
       <span id="weis" class="crypt-text">The recent revelations about NSA capabilities have not changed my assessment of best practices for communication security. So far, most of the allegations are about circumventing cryptosystems through people or processes, not breaking the underlying algorithms. That could change with more revelations, but as of now, nothing has been a big surprise. One exception is that NIST standards, particularly for elliptic curve cryptography, are under more scrutiny from the crypto community.</span>
@@ -176,7 +186,7 @@
     </p>
   </div>
 
-  <h2 id="heading5" class="crypt-text">How to think about threats</h2>
+  <h2 id="heading5" class="crypt-text">How to think about threats (probably skip this)</h2>
   <p id="body9" class="crypt-text">What threat modeling is, why it's important, some sample scenarios</p>
 
   <h2 id="heading6" class="crypt-text">Legislative efforts to curb surveillance</h2>
