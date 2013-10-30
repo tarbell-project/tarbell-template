@@ -1,202 +1,108 @@
 {% extends "_base.html" %}
 
 {% block content %}
-<div class="container-fluid">
-  <div class="row-fluid">
-    <div class="span4 offset4" id="decrypt">
-      <button class="btn btn-large btn-success">Decrypt article</button>
+
+    <div class="hero-unit">
+      <div class="container-fluid">
+        <h1>Chicago Tribune Long Reads</h1>
+      </div>
     </div>
-  </div>
-
-  <div class="row-fluid">
-    <div class="span6 offset3 lead-in">
-      <h4 id="intro1" class="crypt-text">How to protect your privacy against the NSA, GCHQ and other acronyms you've never even heard of.</h4>
-    </div>
-  </div>
-
-<article class="trib-article">
-  <div>
-    <p class="trib-byline"><span id="byline" class="caps crypt-text">By Abraham Epton, News Applications developer</span>
-      <a href="https://twitter.com/aepton" class="twitter-follow-button crypt-text" data-show-count="false" id="twitter">Follow @aepton</a>
-      <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-      <br>
-      <time id="time" class="crypt-text">October 20, 2013</time>
-    </p>
-  </div>
-
-  <div class="trib-media encrypt-options">
-    <figure>
-      <div>
-        <p><strong>Encrypt article using</strong></p>
-        <div class="btn-group" id="schemes">
-          <button class="btn btn-warning encrypt" id="aes">AES</button>
-          <button class="btn btn-danger encrypt" id="des">DES</button>
-          <button class="btn btn-success encrypt" id="3des">Triple DES</button>
-          <button class="btn btn-success encrypt" id="rabbit">Rabbit</button>
-          <button class="btn btn-danger encrypt" id="rc4">RC4</button>
+    <div class="container-fluid">   
+      <div class="social-wrapper social-wrapper-vertical visible-desktop">
+        <small>Share</small>
+        <ul>
+          <li>
+            <a target="_blank" href="">
+              <i class="icon-twitter-sign"></i> <span class="hidden">Twitter</span>
+            </a>  
+          </li>
+          <li>
+            <a target="_blank" href="">
+              <i class="icon-facebook-sign"></i> <span class="hidden">Facebook</span>
+            </a>  
+          </li>
+          <li>
+            <a target="_blank" href="">
+              <i class="icon-google-plus-sign"></i> <span class="hidden">Google+</span>
+            </a>  
+          </li>
+          <li>
+            <a target="_blank" href="">
+              <i class="icon-pinterest-sign"></i> <span class="hidden">Pinterest</span>
+            </a>  
+          </li>
+      </div>
+      <div class="mm-wrapper">
+        <div class="row-fluid">
+          <div class="span9">
+            <article>
+              <p class="lead drop-cap">Editor's note or intro text</p>
+            </article>
+          </div>
+          <div class="span3 hidden-phone">
+            <ul class="nav nav-related">
+              <li><a href="#utica">Utica</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="social-wrapper text-center hidden-desktop">
+          <small>Share this page</small>
+          <ul>
+            <li>
+              <a target="_blank" href="">
+                <i class="icon-twitter-sign"></i> <span class="hidden">Twitter</span>
+              </a>  
+            </li>
+            <li>
+              <a target="_blank" href="">
+                <i class="icon-facebook-sign"></i> <span class="hidden">Facebook</span>
+              </a>  
+            </li>
+            <li>
+              <a target="_blank" href="">
+                <i class="icon-google-plus-sign"></i> <span class="hidden">Google+</span>
+              </a>  
+            </li>
+            <li>
+              <a target="_blank" href="">
+                <i class="icon-pinterest-sign"></i> <span class="hidden">Pinterest</span>
+              </a>  
+            </li>
         </div>
       </div>
-      <div id="aes_explainer" class="explainer">
-        <p><strong>Created</strong>&nbsp;National Institute of Standards and Technology, 2001, based on Rijndael cipher</p>
-        <p><strong>Key length</strong>&nbsp;128, 192 and 256 bits</p>
-        <p><strong>Used in</strong>&nbsp;WinZip, Windows 2000 and later file-system encryption, FileVault disk encryption on OS X, OpenSSL</p>
-        <p><strong>Status</strong>&nbsp;Under suspicion of weakening by NSA?</p>
-      </div>
-      <div id="des_explainer" class="explainer">
-        <p><strong>Created</strong>&nbsp;IBM, early 1970s</p>
-        <p><strong>Key length</strong>&nbsp;56 bits</p>
-        <p><strong>Used in</strong>&nbsp;Not currently in use, but catalyzed academic, non-military study of cryptography</p>
-        <p><strong>Status</strong>&nbsp;Known to be insecure due to small key length</p>
-      </div>
-      <div id="3des_explainer" class="explainer">
-        <p><strong>Created</strong>&nbsp;American National Standards Institute and other government agencies, 1998 or earlier, by applying DES 3 times on each block of a message</p>
-        <p><strong>Key length</strong>&nbsp;56, 112 or 168 bits</p>
-        <p><strong>Used in</strong>&nbsp;Electronic payments including MasterCard and Visa; Microsoft OneNote and Outlook 2007</p>
-        <p><strong>Status</strong>&nbsp;National Institute of Standards and Technology considers it secure through 2030</p>
-      </div>
-      <div id="rabbit_explainer" class="explainer">
-        <p><strong>Created</strong>&nbsp;Cryptico A/S, Copenhagen, 2003</p>
-        <p><strong>Key length</strong>&nbsp;128 bits</p>
-        <p><strong>Used in</strong>&nbsp;Wireless networks, open-source SSL/TLS implementations</p>
-        <p><strong>Status</strong>&nbsp;No known significant vulnerabilities</p>
-      </div>
-      <div id="rc4_explainer" class="explainer">
-        <p><strong>Created</strong>&nbsp;Ron Rivest, RSA Security, 1987</p>
-        <p><strong>Key length</strong>&nbsp;Variable, typically between 40 and 256 bits</p>
-        <p><strong>Used in</strong>&nbsp;WEP and WPA WiFi security, Skype (modified form), PDF</p>
-        <p><strong>Status</strong>&nbsp;Known vulnerability if portion of output isn't discarded, other implementation flaws can render it very insecure</p>
-      </div>
-      <p class="intercred"><small>Implementation by <a href="https://code.google.com/p/crypto-js">CryptoJS</a></small></p>
-    </figure>
-  </div>
+      <hr id="utica">
+      <section>
+        <div class="mm-wrapper">
+          <article>
+            <div class="row-fluid">
+              <div class="span9">
+                <h1 class="chapter-header">
+                  <span>Utica</span>
+                  <small>Julia Keller, December 2004</small></h1>
+              </div>
+            </div>
+            <div class="row-fluid">
+              <div class="span9">
+                  <div class="media article-media">
+                    <img src="http://www.chicagotribune.com/media/photo/2009-04/12351296.jpg"></div>
+                  <p class="drop-cap">Ten seconds. Count it: One. Two. Three. Four. Five. Six. Seven. Eight. Nine. Ten. Ten seconds was roughly how long it lasted. Nobody had a stopwatch, nothing can be proven definitively, but that's the consensus. The tornado that swooped through Utica at 6:09 p.m. April 20 took some 10 seconds to do what it did. Ten seconds is barely a flicker. It's a long, deep breath. It's no time at all. It's an eternity.</p>
 
-  <p id="body1" class="crypt-text">If you're worried about whether the government can read your emails, I have good news and bad news. The bad news is that a determined, well-resourced attacker will almost always find a way. But the good news is that there are basic steps you can take to protect your privacy, and they most likely will make a difference. I asked some of the leading figures in the unclassified cryptography community about what they do, personally, to safeguard their most important communications.</p>
-
-  <p id="body2" class="crypt-text">The most important thing they stressed was that the solution to government espionage against the citizenry is not technical, but political. Governments with nearly unlimited resources will always have some ability to spy on individual people if they so desire. It is therefore incumbent on us to think seriously about what level of government surveillance we are comfortable with, and to push back against efforts we consider overly intrusive.</p>
-
-  <div class="pull-out">
-    <p>
-      <span id="schneier" class="crypt-text">I think the average person needs to understand that this is a political problem, that the surveillance state has gotten too powerful and needs to be reined in.  That this is not a matter of spying on the bad guys; it's a matter of spying on everyone, and making us all less safe.</span>
-      <br>
-      <strong><small id="schneier-name" class="crypt-text">Bruce Schneier, author of Applied Cryptography, technical consultant during Edward Snowden document analysis, all-around cryptobadass</small></strong>
-    </p>
-  </div>
-
-  <p id="body3" class="crypt-text">One way to regain some control over our own security is to personally encrypt our most sensitive data. This is more effective an approach than you might think: grounded in solid mathematical principles, open-source encryption tools available today make it effectively impossible for even the most sophisticated attacker to decrypt a message. This is because they rely on intrinsic properties of very large numbers that are fairly mind-blowing.</p>
-
-  <p id="body4" class="crypt-text">For instance, as Bruce Schneier demonstrated in Applied Cryptography, if you were to hook up a decryption computer to a supernova and convert all of the energy released by that stellar explosion into attempts to decode a secret with brute force, you would eventually be able to guess any 219-bit password. Typical strong passwords today are 256 bits, meaning you would need one supernova to get to 219 bits; another one to get to 220 bits; another one to get to 221 bits; and eventually, 38 supernovae just to guess one password.</p>
-
-  <h2 id="heading2" class="crypt-text">How to pick and manage strong passwords</h2>
-
-  <div class="trib-media encrypt-options">
-    <figure>
-      <div>
-        <strong><p id="passcheck1" class="crypt-text">How many supernova would it take to guess your password?</p></strong>
-
-        <p id="passcheck2" class="crypt-text">In <i>Applied Cryptography</i>, Bruce Schneier described an "ideal" computer - one that operated at the extreme physical limits of computation, using the minimum amount of energy the universe could possibly allow to represent a single bit. This computer would use the fastest technique allowed by the laws of the universe to guess passwords.</p>
-
-        <p id="passcheck3" class="crypt-text">How long do you think it would take such a computer to brute-force your password? How about merely the world's current (publicly-known) fastest supercomputer, the Tianhe-2 (http://www.top500.org/system/177999)?</p>
-
-        <input type="password" id="passcracktext" placeholder="Enter a password similar to your own">
-        <br>
-        <button type="submit" class="btn">Crack this password</button>
-        <a href="https://www.schneier.com/blog/archives/2009/09/the_doghouse_cr.html"><p class="intercred"><small>Calculations based on Bruce Schneier, Applied Cryptography, 1996</small></p></a>
-      </div>
-    </figure>
-  </div>
-
-  <p id="body10" class="crypt-text">No encryption scheme is going to protect your data if the password you use is "password". Dictionary-based attacks, where thousands of the most common passwords are guessed every second, can make quick work of short, insecure keys.</p>
-
-  <p><span id="body11a" class="crypt-text">If your password isn't long enough, even perfectly randomly-generated passwords are vulnerable. In late 2012, </span><a id="body11b" class="crypt-text" href="http://arstechnica.com/security/2012/12/25-gpu-cluster-cracks-every-standard-windows-password-in-6-hours/">a single system employing just 25 graphics cards</a><span id="body11c" class="crypt-text"> pulled out of a consumer desktop PC was able to guess over 350 billion Windows passwords a second. That's enough to try every single possible 8-character password (consisting of letters, numbers and 33 different symbols) in under six hours. It would take that same machine over 239 trillion years to guess all 16-character passwords using the same set of letters, numbers and symbols.</span></p>
-
-  <p><span id="body12a" class="crypt-text">So long passwords are ideal, but they're pretty tough to remember. It's hard enough to recall something like Htu67%c* - it's totally unrealistic to expect people to remember something twice as long and just that arbitrary. Happily, with a long enough phrase you can sacrifice some randomness and make a secure password easy to remember. Randall Monroe </span><a id="body12b" class="crypt-text" href="http://xkcd.com/936/">proposed one technique in his webcomic, xkcd</a><span id="body12c" class="crypt-text">: just pick four random words and use them as your password. "Join symphony forget blankets" is actually a pretty secure password, and much easier to remember than a much less secure, randomly-generated string like "1&hT^s5%".</span></p>
-
-  <p id="body13" class="crypt-text">And of course, don't reuse any of these fiendishly complex long strings of random text, in case they get stolen from one website, leaving your accounts on others vulnerable. So how can you possibly keep all of them straight, short of writing them down or getting a truly unholy number of tattoos? One option is to use a password manager like 1Password or Lastpass. Their browser extensions fill in your passwords for you, and automatically generate new ones of whatever complexity you prefer.</p>
-
-  <p id="body14" class="crypt-text">While it might sound dangerous to store all your passwords with any one company, many of the technically-inclined and security-conscious people I spoke to were more than comfortable with the arrangement. Formidable IT security is a craft, and most companies who don't specialize in it aren't likely to do it perfectly. It's obviously not without risk to store all your passwords - or all your anything - in one place. But the benefits to your security of using a password manager to store a variety of strong passwords likely far outweigh the risks of using a centralized service to do so.</p>
-
-  <div class="pull-out">
-    <p>
-      <span id="etsy" class="crypt-text">The biggest, and easiest first step is to use something like LastPass or 1Password. The NSA doesn't usually target the mathematics of encryption - most of that is really solid. A more common approach is to steal passwords or attack weaknesses in software (that's how they gained access to android and iPhone data).</span>
-      <br><br>
-      <span id="etsy2" class="crypt-text">Lots of people will say not to use the same password on multiple sites, but that's really hard. Using one of the above tools makes it super easy. They will generate, remember, and auto-fill long complex unique passwords on websites for you.</span>
-      <br>
-      <strong><small id="etsy-name" class="crypt-text">Avleen Vig, Staff Operations Engineer responsible for infrastructure, Etsy</small></strong>
-    </p>
-  </div>
-
-  <h2 id="heading1" class="crypt-text">How to encrypt your emails (and other stuff)</h2>
-  <div class="trib-media encrypt-options">
-    <figure>
-      <div>
-        <p id="bodynote" class="crypt-text">Add interactive explaining how public-key cryptography works, since I've always wondered/not quite felt like I understood it I bet others have too</p>
-      </div>
-    </figure>
-  </div>
-
-  <p id="body5" class="crypt-text">Explain public-key crypto, link to easy-to-use crypto tools, explain whole-disk encryption and what its weak points are (crowbar, endpoints)</p>
-
-  <div class="pull-out">
-    <p>
-      <span id="garret" class="crypt-text">I don't use encryption myself, mainly because it's such a colossal [pain]. I also think it's the Wrong Answer. I believe the only effective way to stop the descent into a surveillance state (and from there to a police state) is politically, not technologically. The balance of power is tilted so heavily in favor of the NSA at the moment that for a non-technical person to try to evade them is probably hopeless. The only effective way to stop ubiquitous surveillance is to take away the legal authority under which it is conducted.</span>
-      <br>
-      <strong><small id="garret-name" class="crypt-text">Ron Garret, co-founder of Spark Innovations and an author of the original Google AdWords billing system</small></strong>
-    </p>
-  </div>
-
-  
-
-  <h2 id="heading3" class="crypt-text">How to become anonymous</h2>
-  <div class="trib-media encrypt-options">
-    <figure>
-      <div>
-        <p id="bodynote" class="crypt-text">Add interactive explaining how Tor works (and how it's different from a VPN and a proxy), maybe make one comparing Tor to steganography with an example of the latter - both are all about hiding signal in noise</p>
-      </div>
-    </figure>
-  </div>
-
-  <p id="body7" class="crypt-text">Explain how Tor works, what it's good/not good for (talk about NSA powerpoint about how hard it is to break), how to easily access it, what a proxy is and how to use it</p>
-
-  <div class="pull-out">
-    <p>
-      <span id="tor" class="crypt-text">We will never be able to de-anonymize all Tor users all the time.</span>
-      <br><br>
-      <span id="tor2" class="crypt-text">With manual analysis we can de-anonymize a very small fraction of Tor users, however, no success de-anonymizing a user in response to a [request, or on-demand].</span>
-      <br>
-      <strong><a href="http://www.theguardian.com/world/interactive/2013/oct/04/tor-stinks-nsa-presentation-document"><small id="tor-name" class="crypt-text">"Tor Stinks", Top Secret NSA presentation leaked by Edward Snowden</small></a></strong>
-    </p>
-  </div>
-
-  <h2 id="heading4" class="crypt-text">How to minimize your exposure</h2>
-  <p id="body8" class="crypt-text">Why staying patched/up-to-date is important, what it won't protect against, what a firewall is and how to enable it in OS X and Windows, link to free anti-virus and anti-malware stuff, more explanation of what NSA seems to be able to do and what they seem not to be able to do</p>
-
-  <p id="patching1" class="crypt-text">Perhaps the most boring advice is also the most important: before you do anything else, before you read up on obscure encryption algorithms or start putting your phones in the freezer to evade governments remotely turning on the microphone (really!), make sure your computer, phone and any other computing devices you own are up-to-date with the latest software patches. One of the easiest and most effective means for any attacker to take control of your equipment and access your secrets is to sneak in through an unpatched security hole.</p>
-
-  <p id="patching2" class="crypt-text">Many of the most sophisticated attackers - large governments and criminal networks - are able to purchase or create so-called 0-day vulnerabilities, previously-undisclosed security flaws that can leave your computer open to intrusion. (On the day a vulnerability is disclosed, it becomes a 1-day exploit, and the next day becomes a 2-day exploit, and so on.) 0-day vulnerabilities are heavily prized because they're almost impossible to prevent: you can't fix a hole you didn't know was there in the first place.</p>
-
-  <p id="patching3" class="crypt-text">But 0-day vulnerabilities are pretty rare, and most attackers aren't the sort of highly-sophisticated entities that have enormous research departments and budgets with which to discover them. Much more common, and therefore more dangerous, are the legions of small bugs that cause tiny security flaws in essentially every piece of software on your machine. Once you trust an app - either by giving it your data, or by getting used to seeing it ask you for permission before it does something - you're vulnerable to bugs in that software. Keeping it patched and up-to-date is therefore extremely important.</p>
-
-  <p id="patching4" class="crypt-text">Some software handles this automatically. For instance, Google's Chrome Internet browser regularly downloads updates, and waits to install them whenever you exit the program. Similarly, Apple's OS X Software Update system regularly checks for and downloads patches, though you typically have to restart your computer before many of the most important ones take effect. Microsoft's Windows Update goes a step farther, and automatically downloads and installs new fixes as they become available, if you choose to let it.</p>
-
-  <div class="pull-out">
-    <p>
-      <span id="weis" class="crypt-text">The recent revelations about NSA capabilities have not changed my assessment of best practices for communication security. So far, most of the allegations are about circumventing cryptosystems through people or processes, not breaking the underlying algorithms. That could change with more revelations, but as of now, nothing has been a big surprise. One exception is that NIST standards, particularly for elliptic curve cryptography, are under more scrutiny from the crypto community.</span>
-      <br>
-      <strong><small id="weis-name" class="crypt-text">Steve Weis, creator of Google's KeyCzar and 2-step verification and co-founder, PrivateCore</small></strong>
-    </p>
-  </div>
-
-  <h2 id="heading5" class="crypt-text">How to think about threats (probably skip this)</h2>
-  <p id="body9" class="crypt-text">What threat modeling is, why it's important, some sample scenarios</p>
-
-  <h2 id="heading6" class="crypt-text">Legislative efforts to curb surveillance (probably skip this)</h2>
-  <p id="body14" class="crypt-text">What's been tried, what results were, any efforts on horizon</p>
-
-  <h2 id="heading7" class="crypt-text">Technology can't solve a political problem</h2>
-  <p id="cantsolve1" class="crypt-text">Think thoughtfully :) about how to think about tech, how to strike a balance, how technology can't fix a political disfunction, technology is apolitical but it doesn't have an amoral impact on the world, and like other things - nukes, landmines - their creation/use compels technologists to advocate for thoughtful, responsible use, etc etc</p>
-
-  <p id="cantsolve2" class="crypt-text">Reach out to NU, U of C folks to get them to review tech aspects of article at least</p>
-
-</article>
+                  <p>If the sky could hold a grudge, it would look the way the sky looked over northern Illinois that day. Low, gray clouds stretched to the edges in a thin veneer of menace. Rain came and went, came and went, came and went.</p>
+                  <p class="text-center top-line">
+                    <a class="media-link digital-plus-icon" href="/utica_1.html">Read part 1, A wicked wind takes aim</a>
+                  </p>
+              </div>
+              <div class="span3 hidden-phone">
+                <ul class="nav nav-related">
+                  <li><a href="/utica_1.html">A wicked wind takes aim</a></li>
+                  <li><a href="/utica_2.html">"Milestone's gone!"</a</li>
+                  <li><a href="/utica_3.html">After the storm's fury</a></li>
+                </ul>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+      <hr>
 
 {% endblock content %}
