@@ -7,15 +7,9 @@ import re
 
 from flask import Blueprint
 from jinja2 import evalcontextfilter, Markup
-from scrubber import Scrubber
 from time import time
 
 NAME = "Basic Bootstrap 3 template"
-
-class TarbellScrubber(Scrubber):
-    disallowed_tags_save_content = set((
-        'blink', 'body', 'html', 'runtime:topic'
-    ))
 
 blueprint = Blueprint('base', __name__)
 
@@ -46,8 +40,6 @@ def context_processor():
 @blueprint.app_template_filter()
 def process_text(text, scrub=True):
     try:
-        if scrub:
-            text = TarbellScrubber().scrub(text)
         return Markup(text)
     except TypeError:
         return ""
