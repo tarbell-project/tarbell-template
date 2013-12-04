@@ -46,7 +46,7 @@
   {% endif %}
   {% endblock google_analytics %}
 </head>
-<body{% block bodyattrs %} class="{{ pagename }}"{% endblock bodyattrs %}>
+<body{% block bodyattrs %} class="page-{{ PATH[:-5] }}"{% endblock bodyattrs %}>
 
 {% block nav %}
   {% include "_nav.html" %}
