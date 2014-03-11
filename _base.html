@@ -4,11 +4,13 @@
   <title>{% block title %}{{ title|striptags }}{% endblock title %}</title>
   <link rel="shortcut icon" href="/favicon{% if preview_mode %}-preview{% endif %}.ico" />
 
-  {% block css %}
+  {% block library_css %}
   <link rel="stylesheet" type="text/css" href="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.0/css/bootstrap.min.css" />
   <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/3.0.2/css/font-awesome.min.css" />
-  <link rel="stylesheet" type="text/css" href="base.css" />
-  {% endblock css %}
+  <link rel="stylesheet" type="text/css" href="css/base.css" />
+  {% endblock library_css %}
+
+  {% block css %}{% endblock %}
 
   {% block opengraph %} 
   <meta property="og:url" content="{{ ROOT_URL }}/{{ PATH }}" />
