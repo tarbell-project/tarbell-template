@@ -42,6 +42,7 @@ def context_processor():
     """
     return {
         'read_file': read_file,
+        'render_file' :render_file
     }
 
 
