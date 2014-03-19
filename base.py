@@ -23,13 +23,16 @@ def read_file(context, path, absolute=False):
 
     if not absolute:
         path = os.path.join(os.path.dirname(__file__), '..', path)
-
     try:
-        file_contents = open(path, 'r').read().encode('utf-8')
-        template = Template(file_contents)
-        return template.render(**context)
+        return open(path, 'r').read().encode('utf-8')
     except IOError:
         return None
+
+@contextfunction
+def render_file(context, path, absolute=False):
+    file_contents = read_file(context, path, absolute)
+    template = Template(file_contents)
+    return template.render(**context)
 
 
 @blueprint.app_context_processor
