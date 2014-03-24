@@ -29,15 +29,16 @@ def create_repo(site, git):
     create = raw_input("Want to create a Github repo for this project [Y/n]? ")
     if create and not create.lower() == "y":
         return puts("Not creating Github repo...")
-
+    
+    name = site.project.NAME
     user = raw_input("What is your Github username? ")
     password = getpass.getpass("What is your Github password? ")
     headers = {'Content-type': 'application/json', 'Accept': 'application/json'}
-    data = {'name': site.project.NAME, 'has_issues': True, 'has_wiki': True}
+    data = {'name': name, 'has_issues': True, 'has_wiki': True}
     resp = requests.post('https://api.github.com/user/repos', auth=(user, password), headers=headers, data=json.dumps(data))
-    puts("Created {0}".format(colored.green("https://github.com/{0}/{1}".format(user, site.project.NAME))))
+    puts("Created {0}".format(colored.green("https://github.com/{0}/{1}".format(user, name))))
     clone_url = resp.json().get("clone_url")
-    puts(git.remote.add("origin", "git@github.com:{0}/{1}.git".format(user,site.project.NAME)))
+    puts(git.remote.add("origin", "git@github.com:{0}/{1}.git".format(user,name)))
     puts(git.push("origin", "master"))
 
     create = raw_input("Would you like to create some default issues [Y/n]? ")
@@ -47,7 +48,7 @@ def create_repo(site, git):
     for issue in ISSUES:
         puts("Creating {0}".format(colored.yellow(issue)))
         data = {'title': issue}
-        resp = requests.post('https://api.github.com/repos/{0}/{1}/issues'.format(user, sites.project.NAME), auth=(user, password), headers=headers, data=json.dumps(data))
+        resp = requests.post('https://api.github.com/repos/{0}/{1}/issues'.format(user, name), auth=(user, password), headers=headers, data=json.dumps(data))
 
 
 
