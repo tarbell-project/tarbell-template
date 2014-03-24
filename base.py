@@ -1,6 +1,7 @@
 import datetime
 import dateutil.parser
 import dateutil.tz
+import getpass
 import markdown as Markdown
 import os
 import re
@@ -25,7 +26,8 @@ def create_repo(site, git):
     # @TODO 
     # Set up remote url
     user = raw_input("What is your Github username? ")
-    password = raw_input("What is your Github password? ")
+    password = getpass.getpass()
+    #raw_input("What is your Github password? ")
     resp = requests.get('https://api.github.com/user', auth=(user, password)) 
     import ipdb; ipdb.set_trace();
 
