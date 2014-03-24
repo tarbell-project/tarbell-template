@@ -13,6 +13,10 @@ NAME = "Basic Bootstrap 3 template"
 
 blueprint = Blueprint('base', __name__)
 
+@register_hook('newproject')
+def create_repo(site, git):
+    import ipdb; ipdb.set_trace();
+
 def read_file(path, absolute=False):
     """
     Read the file at `path`. If `absolute` is True, use absolute path,
