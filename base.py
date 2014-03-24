@@ -15,6 +15,12 @@ from tarbell.hooks import register_hook
 from time import time
 
 NAME = "Basic Bootstrap 3 template"
+ISSUES = [
+    "Edit index.html",
+    "Add Google analytics ID to spreadsheet",
+    "Publish the project to production",
+]
+
 
 blueprint = Blueprint('base', __name__)
 
@@ -24,29 +30,24 @@ def create_repo(site, git):
     if create and not create.lower() == "y":
         return puts("Not creating Github repo...")
 
-    # Set up remote url
     user = raw_input("What is your Github username? ")
     password = getpass.getpass("What is your Github password? ")
-    #password = getpass.getpass()
     headers = {'Content-type': 'application/json', 'Accept': 'application/json'}
     data = {'name': site.project.NAME, 'has_issues': True, 'has_wiki': True}
     resp = requests.post('https://api.github.com/user/repos', auth=(user, password), headers=headers, data=json.dumps(data))
+    puts("Created {0}".format(colored.green("https://github.com/{0}/{1}".format(user, site.project.NAME))))
     clone_url = resp.json().get("clone_url")
-    import ipdb; ipdb.set_trace();
-    git.remote.add("origin", "git@github.com:{0}/{1}.git".format(user,site.project.NAME))
-    git.push("origin", "master")
+    puts(git.remote.add("origin", "git@github.com:{0}/{1}.git".format(user,site.project.NAME)))
+    puts(git.push("origin", "master"))
 
-    print "exit"
+    create = raw_input("Would you like to create some default issues [Y/n]? ")
+    if create and not create.lower() == "y":
+        return puts("Not creating default issues")
 
-    #if remote_url:
-        #puts("\nCreating new remote 'origin' to track {0}.".format(colored.yellow(remote_url)))
-        #puts("\n{0}: Don't forget! It's up to you to create this remote and push to it.".format(colored.cyan("Warning")))
-    #else:
-
-    #puts("\n- Not setting up remote repository. Use your own version control!")
-
-    #puts("\n- Not setting up remote repository. Use your own version control!")
-
+    for issue in ISSUES:
+        puts("Creating {0}".format(colored.yellow(issue)))
+        data = {'title': issue}
+        resp = requests.post('https://api.github.com/repos/{0}/{1}/issues'.format(user, sites.project.NAME), auth=(user, password), headers=headers, data=json.dumps(data))
 
 
 
