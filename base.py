@@ -20,17 +20,14 @@ blueprint = Blueprint('base', __name__)
 
 @register_hook('newproject')
 def create_repo(site, git):
-    print site
-    print git
-    print "hi"
-    # @TODO
     create = raw_input("Want to create a Github repo for this project [Y/n]? ")
     if create and not create.lower() == "y":
         return puts("Not creating Github repo...")
 
     # Set up remote url
     user = raw_input("What is your Github username? ")
-    password = getpass.getpass("What is your Github password? ")
+    #password = getpass.getpass("What is your Github password? ")
+    password = getpass.getpass()
     headers = {'Content-type': 'application/json', 'Accept': 'application/json'}
     data = { 'name': site.project.NAME, 'has_issues': True, 'has_wiki': True }
     resp = requests.post('https://api.github.com/user/repos', auth=(user, password), headers=headers, data=json.dumps(data))
