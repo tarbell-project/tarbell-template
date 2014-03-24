@@ -16,9 +16,10 @@ from time import time
 
 NAME = "Basic Bootstrap 3 template"
 ISSUES = [
-    "Edit index.html",
-    "Add Google analytics ID to spreadsheet",
-    "Publish the project to production",
+    ("Edit index.html", "Create new content in `index.html` by replacing the `{% block content %} ... {% endblock %}'"),
+    ("Add Google analytics ID to spreadsheet", "Add your tracking code."),
+    ("Device testing", "Chrome, Firefox, IE 8+, Safari, iPhone, iPad, Android"),
+    ("Publish the project to production", "Are you ready to ship?"),
 ]
 
 
@@ -29,7 +30,7 @@ def create_repo(site, git):
     create = raw_input("Want to create a Github repo for this project [Y/n]? ")
     if create and not create.lower() == "y":
         return puts("Not creating Github repo...")
-    
+
     name = site.project.NAME
     user = raw_input("What is your Github username? ")
     password = getpass.getpass("What is your Github password? ")
@@ -45,9 +46,9 @@ def create_repo(site, git):
     if create and not create.lower() == "y":
         return puts("Not creating default issues")
 
-    for issue in ISSUES:
-        puts("Creating {0}".format(colored.yellow(issue)))
-        data = {'title': issue}
+    for title, description in ISSUES:
+        puts("Creating {0}".format(colored.yellow(title)))
+        data = {'title': title, 'description': description}
         resp = requests.post('https://api.github.com/repos/{0}/{1}/issues'.format(user, name), auth=(user, password), headers=headers, data=json.dumps(data))
 
 
