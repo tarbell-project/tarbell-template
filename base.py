@@ -4,6 +4,7 @@ import dateutil.tz
 import markdown as Markdown
 import os
 import re
+import requests
 
 from clint.textui import colored, puts
 from flask import Blueprint
