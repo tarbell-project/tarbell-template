@@ -30,20 +30,23 @@ def create_repo(site, git):
 
     # Set up remote url
     user = raw_input("What is your Github username? ")
-    password = getpass.getpass()
-    #raw_input("What is your Github password? ")
-    #resp = requests.get('https://api.github.com/user', auth=(user, password)) 
+    password = getpass.getpass("What is your Github password? ")
     headers = {'Content-type': 'application/json', 'Accept': 'application/json'}
     data = { 'name': site.project.NAME, 'has_issues': True, 'has_wiki': True }
     resp = requests.post('https://api.github.com/user/repos', auth=(user, password), headers=headers, data=json.dumps(data))
+    clone_url = resp.json().get("clone_url")
+    git.remote.add("origin", clone_url)
+    git.push("origin", "master")
+
     import ipdb; ipdb.set_trace();
     print "exit"
-    #remote_url = raw_input("\nWhat is the URL of your project repository? (e.g. git@github.com:myaccount/myproject.git, leave blank to skip) ")
+
     #if remote_url:
         #puts("\nCreating new remote 'origin' to track {0}.".format(colored.yellow(remote_url)))
-        #git.remote.add(*["origin", remote_url])
         #puts("\n{0}: Don't forget! It's up to you to create this remote and push to it.".format(colored.cyan("Warning")))
     #else:
+
+    #puts("\n- Not setting up remote repository. Use your own version control!")
 
     #puts("\n- Not setting up remote repository. Use your own version control!")
 
