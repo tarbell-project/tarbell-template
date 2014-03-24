@@ -5,8 +5,10 @@ import markdown as Markdown
 import os
 import re
 
+from clint.textui import colored, puts
 from flask import Blueprint
 from jinja2 import evalcontextfilter, Markup
+from tarbell.hooks import register_hook
 from time import time
 
 NAME = "Basic Bootstrap 3 template"
@@ -15,6 +17,9 @@ blueprint = Blueprint('base', __name__)
 
 @register_hook('newproject')
 def create_repo(site, git):
+    print site
+    print git
+    print "hi"
     import ipdb; ipdb.set_trace();
 
 def read_file(path, absolute=False):
