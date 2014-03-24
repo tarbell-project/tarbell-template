@@ -22,17 +22,23 @@ def create_repo(site, git):
     print site
     print git
     print "hi"
-    #import ipdb; ipdb.set_trace();
-    # @TODO 
+    # @TODO
+    create = raw_input("Want to create a Github repo for this project [Y/n]? ")
+    if create and not create.lower() == "y":
+        return puts("Not creating Github repo...")
+
     # Set up remote url
     user = raw_input("What is your Github username? ")
     password = getpass.getpass()
     #raw_input("What is your Github password? ")
-    resp = requests.get('https://api.github.com/user', auth=(user, password)) 
+    #resp = requests.get('https://api.github.com/user', auth=(user, password)) 
+    resp = requests.post('https://api.github.com/user/repos', auth=(user, password), params={
+        'name': site.name,
+        'has_issues': True,
+        'has_wiki': True,
+    })
     import ipdb; ipdb.set_trace();
-
-
-
+    print "exit"
     #remote_url = raw_input("\nWhat is the URL of your project repository? (e.g. git@github.com:myaccount/myproject.git, leave blank to skip) ")
     #if remote_url:
         #puts("\nCreating new remote 'origin' to track {0}.".format(colored.yellow(remote_url)))
