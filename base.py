@@ -33,8 +33,8 @@ def create_repo(site, git):
     resp = requests.post('https://api.github.com/user/repos', auth=(user, password), headers=headers, data=json.dumps(data))
     clone_url = resp.json().get("clone_url")
     git.remote.add("origin", clone_url)
-    #import ipdb; ipdb.set_trace();
-    git.push("origin", "master")
+    import ipdb; ipdb.set_trace();
+    git.push("https://{0}:{1}@github.com/{0}/{2}".format(user,password,site.project.NAME), "master")
 
     print "exit"
 
