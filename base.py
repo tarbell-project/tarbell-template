@@ -30,12 +30,12 @@ def create_repo(site, git):
     password = getpass.getpass()
     headers = {'Content-type': 'application/json', 'Accept': 'application/json'}
     data = { 'name': site.project.NAME, 'has_issues': True, 'has_wiki': True }
+    import ipdb; ipdb.set_trace();
     resp = requests.post('https://api.github.com/user/repos', auth=(user, password), headers=headers, data=json.dumps(data))
     clone_url = resp.json().get("clone_url")
     git.remote.add("origin", clone_url)
     git.push("origin", "master")
 
-    import ipdb; ipdb.set_trace();
     print "exit"
 
     #if remote_url:
