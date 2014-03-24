@@ -2,6 +2,7 @@ import datetime
 import dateutil.parser
 import dateutil.tz
 import getpass
+import json
 import markdown as Markdown
 import os
 import re
@@ -32,11 +33,13 @@ def create_repo(site, git):
     password = getpass.getpass()
     #raw_input("What is your Github password? ")
     #resp = requests.get('https://api.github.com/user', auth=(user, password)) 
-    resp = requests.post('https://api.github.com/user/repos', auth=(user, password), data={
+    headers = {'Content-type': 'application/json', 'Accept': 'text/plain'}
+    data = json.dumps({
         'name': site.project.NAME,
-        'has_issues': True,
-        'has_wiki': True,
+        'has_issues': 1,
+        'has_wiki': 1,
     })
+    resp = requests.post('https://api.github.com/user/repos', auth=(user, password), headers=headers, data=data)
     import ipdb; ipdb.set_trace();
     print "exit"
     #remote_url = raw_input("\nWhat is the URL of your project repository? (e.g. git@github.com:myaccount/myproject.git, leave blank to skip) ")
