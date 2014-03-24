@@ -32,12 +32,12 @@ def create_repo(site, git):
     password = getpass.getpass()
     #raw_input("What is your Github password? ")
     #resp = requests.get('https://api.github.com/user', auth=(user, password)) 
-    import ipdb; ipdb.set_trace();
     resp = requests.post('https://api.github.com/user/repos', auth=(user, password), params={
-        'name': name,
+        'name': site.project.NAME,
         'has_issues': True,
         'has_wiki': True,
     })
+    import ipdb; ipdb.set_trace();
     print "exit"
     #remote_url = raw_input("\nWhat is the URL of your project repository? (e.g. git@github.com:myaccount/myproject.git, leave blank to skip) ")
     #if remote_url:
