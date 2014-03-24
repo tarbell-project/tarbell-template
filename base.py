@@ -26,7 +26,7 @@ def create_repo(site, git):
     # Set up remote url
     user = raw_input("What is your Github username? ")
     password = raw_input("What is your Github password? ")
-    r = requests.get('https://api.github.com/user', auth=(user, password)) 
+    resp = requests.get('https://api.github.com/user', auth=(user, password)) 
     import ipdb; ipdb.set_trace();
 
 
