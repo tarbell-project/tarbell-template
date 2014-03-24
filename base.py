@@ -32,7 +32,7 @@ def create_repo(site, git):
     password = getpass.getpass()
     #raw_input("What is your Github password? ")
     #resp = requests.get('https://api.github.com/user', auth=(user, password)) 
-    resp = requests.post('https://api.github.com/user/repos', auth=(user, password), params={
+    resp = requests.post('https://api.github.com/user/repos', auth=(user, password), data={
         'name': site.project.NAME,
         'has_issues': True,
         'has_wiki': True,
