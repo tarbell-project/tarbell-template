@@ -20,7 +20,27 @@ def create_repo(site, git):
     print site
     print git
     print "hi"
+    #import ipdb; ipdb.set_trace();
+    # @TODO 
+    # Set up remote url
+    user = raw_input("What is your Github username? ")
+    password = raw_input("What is your Github password? ")
+    r = requests.get('https://api.github.com/user', auth=(user, password)) 
     import ipdb; ipdb.set_trace();
+
+
+
+    #remote_url = raw_input("\nWhat is the URL of your project repository? (e.g. git@github.com:myaccount/myproject.git, leave blank to skip) ")
+    #if remote_url:
+        #puts("\nCreating new remote 'origin' to track {0}.".format(colored.yellow(remote_url)))
+        #git.remote.add(*["origin", remote_url])
+        #puts("\n{0}: Don't forget! It's up to you to create this remote and push to it.".format(colored.cyan("Warning")))
+    #else:
+
+    #puts("\n- Not setting up remote repository. Use your own version control!")
+
+
+
 
 def read_file(path, absolute=False):
     """
