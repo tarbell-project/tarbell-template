@@ -6,25 +6,33 @@ import os
 import re
 
 from flask import Blueprint
-from jinja2 import evalcontextfilter, Markup
+from jinja2 import Markup, evalcontextfilter, contextfunction, Template
 from time import time
 
 NAME = "Basic Bootstrap 3 template"
 
 blueprint = Blueprint('base', __name__)
 
-def read_file(path, absolute=False):
+@contextfunction
+def read_file(context, path, absolute=False):
     """
-    Read the file at `path`. If `absolute` is True, use absolute path,
+    Read the file at `path`, rendering the file contents as a template 
+    with the caller's context. If `absolute` is True, use absolute path,
     otherwise path is assumed to be relative to Tarbell template root dir.
     """
+
     if not absolute:
         path = os.path.join(os.path.dirname(__file__), '..', path)
-
     try:
-        return open(path, 'r').read()
+        return open(path, 'r').read().encode('utf-8')
     except IOError:
         return None
+
+@contextfunction
+def render_file(context, path, absolute=False):
+    file_contents = read_file(context, path, absolute)
+    template = Template(file_contents)
+    return template.render(**context)
 
 
 @blueprint.app_context_processor
@@ -34,6 +42,7 @@ def context_processor():
     """
     return {
         'read_file': read_file,
+        'render_file' :render_file
     }
 
 
