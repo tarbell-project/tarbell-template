@@ -211,4 +211,6 @@ def linebreaksbr(eval_ctx, value):
 @blueprint.app_template_filter()
 def markdown(value):
     """Run text through markdown process"""
-    return Markup(Markdown.markdown(value))
+    if isinstance(value, basestring):
+        return Markup(Markdown.markdown(value))
+    return None
