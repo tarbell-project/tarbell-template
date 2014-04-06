@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import datetime
 import dateutil.parser
 import dateutil.tz
@@ -212,5 +213,6 @@ def linebreaksbr(eval_ctx, value):
 def markdown(value):
     """Run text through markdown process"""
     if isinstance(value, basestring):
+        value = value.decode("utf-8")
         return Markup(Markdown.markdown(value))
     return None
