@@ -11,7 +11,7 @@ import requests
 
 from clint.textui import colored, puts
 from flask import Blueprint
-from jinja2 import evalcontextfilter, Markup
+from jinja2 import evalcontextfilter, contextfunction, Template, Markup
 from tarbell.hooks import register_hook
 from time import time
 
@@ -53,8 +53,8 @@ def create_repo(site, git):
         resp = requests.post('https://api.github.com/repos/{0}/{1}/issues'.format(user, name), auth=(user, password), headers=headers, data=json.dumps(data))
 
 
-
-def read_file(path, absolute=False):
+@contextfunction
+def read_file(context, path, absolute=False):
     """
     Read the file at `path`. If `absolute` is True, use absolute path,
     otherwise path is assumed to be relative to Tarbell template root dir.
@@ -67,6 +67,15 @@ def read_file(path, absolute=False):
     except IOError:
         return None
 
+@contextfunction
+def render_file(context, path, absolute=False):
+    """
+    Render a file with the current context
+    """
+    file_contents = read_file(context, path, absolute)
+    template = Template(file_contents)
+    return template.render(**context)
+
 
 @blueprint.app_context_processor
 def context_processor():
@@ -75,6 +84,7 @@ def context_processor():
     """
     return {
         'read_file': read_file,
+        'render_file': render_file,
     }
 
 
