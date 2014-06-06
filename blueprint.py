@@ -47,10 +47,10 @@ def create_repo(site, git):
     if create and not create.lower() == "y":
         return puts("Not creating default issues")
 
-    for title, description in ISSUES:
-        puts("Creating {0}".format(colored.yellow(title)))
-        data = {'title': title, 'body': description}
-        resp = requests.post('https://api.github.com/repos/{0}/{1}/issues'.format(user, name), auth=(user, password), headers=headers, data=json.dumps(data))
+    #for title, description in ISSUES:
+    #    puts("Creating {0}".format(colored.yellow(title)))
+    #    data = {'title': title, 'body': description}
+    #    resp = requests.post('https://api.github.com/repos/{0}/{1}/issues'.format(user, name), auth=(user, password), headers=headers, data=json.dumps(data))
 
 
 @contextfunction
