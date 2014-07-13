@@ -10,7 +10,7 @@ import re
 import requests
 
 from clint.textui import colored, puts
-from flask import Blueprint
+from flask import Blueprint, render_template
 from jinja2 import evalcontextfilter, contextfunction, Template, Markup
 from tarbell.hooks import register_hook
 from time import time
@@ -72,9 +72,7 @@ def render_file(context, path, absolute=False):
     """
     Render a file with the current context
     """
-    file_contents = read_file(context, path, absolute)
-    template = Template(file_contents)
-    return template.render(**context)
+    return render_template(path, **context)
 
 
 @blueprint.app_context_processor
