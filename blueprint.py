@@ -72,9 +72,7 @@ def render_file(context, path, absolute=False):
     """
     Render a file with the current context
     """
-    file_contents = read_file(context, path, absolute)
-    template = Template(file_contents)
-    return template.render(**context)
+    return render_template(path, **context)
 
 
 @blueprint.app_context_processor
