@@ -233,6 +233,8 @@ def update_facebook(site, s3):
     for name, path in s3.find_file_paths():
         if name.endswith('.html'):
             _ping_facebook('http://{0}/{1}'.format(s3.bucket, name))
+            if name.endswith('index.html'):
+                _ping_facebook('http://{0}/{1}'.format(s3.bucket, name[0:-10]))
 
 
 def _ping_facebook(url):
@@ -241,4 +243,5 @@ def _ping_facebook(url):
         'q': '{0}?fbrefresh=x'.format(url)
     }
     resp = requests.get(fb_url, params=params)
-    puts('Pinged {0} with status code {1}'.format(resp.url, resp.status_code))
+    puts('Pinged {0} with status code {1}'.format(resp.request.path_url, resp.status_code))
+
