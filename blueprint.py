@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+import codecs
 import datetime
 import dateutil.parser
 import dateutil.tz
@@ -54,7 +55,7 @@ def create_repo(site, git):
 
 
 @contextfunction
-def read_file(context, path, absolute=False):
+def read_file(context, path, absolute=False, encoding='utf-8'):
     """
     Read the file at `path`. If `absolute` is True, use absolute path,
     otherwise path is assumed to be relative to Tarbell template root dir.
@@ -63,7 +64,7 @@ def read_file(context, path, absolute=False):
         path = os.path.join(os.path.dirname(__file__), '..', path)
 
     try:
-        return open(path, 'r').read()
+        return codecs.open(path, 'r', encoding).read()
     except IOError:
         return None
 
@@ -89,11 +90,11 @@ def context_processor():
 
 
 @blueprint.app_template_filter()
-def process_text(text, scrub=True):
+def process_text(text):
     try:
         return Markup(text)
     except TypeError:
-        return ""
+        return u''
 
 
 @blueprint.app_template_filter()
