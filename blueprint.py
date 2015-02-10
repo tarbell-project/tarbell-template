@@ -33,7 +33,7 @@ def create_repo(site, git):
     if create and not create.lower() == "y":
         return puts("Not creating Github repo...")
 
-    name = site.project.NAME
+    name = site.path.split('/')[-1]
     user = raw_input("What is your Github username? ")
     password = getpass.getpass("What is your Github password? ")
     headers = {'Content-type': 'application/json', 'Accept': 'application/json'}
