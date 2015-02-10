@@ -44,14 +44,10 @@ def create_repo(site, git):
     puts(git.remote.add("origin", "git@github.com:{0}/{1}.git".format(user,name)))
     puts(git.push("origin", "master"))
 
-    create = raw_input("Would you like to create some default issues [Y/n]? ")
-    if create and not create.lower() == "y":
-        return puts("Not creating default issues")
-
-    #for title, description in ISSUES:
-    #    puts("Creating {0}".format(colored.yellow(title)))
-    #    data = {'title': title, 'body': description}
-    #    resp = requests.post('https://api.github.com/repos/{0}/{1}/issues'.format(user, name), auth=(user, password), headers=headers, data=json.dumps(data))
+    for title, description in ISSUES:
+        puts("Creating {0}".format(colored.yellow(title)))
+        data = {'title': title, 'body': description}
+        resp = requests.post('https://api.github.com/repos/{0}/{1}/issues'.format(user, name), auth=(user, password), headers=headers, data=json.dumps(data))
 
 
 @contextfunction
