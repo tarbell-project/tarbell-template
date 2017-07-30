@@ -13,6 +13,7 @@ import requests
 from clint.textui import colored, puts
 from flask import Blueprint
 from jinja2 import evalcontextfilter, contextfunction, Template, Markup
+from six.moves import input as raw_input
 from tarbell.hooks import register_hook
 from time import time
 
