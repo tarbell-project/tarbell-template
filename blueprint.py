@@ -13,6 +13,7 @@ import requests
 from clint.textui import colored, puts
 from flask import Blueprint
 from jinja2 import evalcontextfilter, contextfunction, Template, Markup
+from six.moves import input as raw_input
 from tarbell.hooks import register_hook
 from time import time
 
@@ -39,13 +40,13 @@ def create_repo(site, git):
     headers = {'Content-type': 'application/json', 'Accept': 'application/json'}
     data = {'name': name, 'has_issues': True, 'has_wiki': True}
     resp = requests.post('https://api.github.com/user/repos', auth=(user, password), headers=headers, data=json.dumps(data))
-    puts("Created {0}".format(colored.green("https://github.com/{0}/{1}".format(user, name))))
+    puts("Created {0!s}".format(colored.green("https://github.com/{0}/{1}".format(user, name))))
     clone_url = resp.json().get("clone_url")
     puts(git.remote.add("origin", "git@github.com:{0}/{1}.git".format(user,name)))
     puts(git.push("origin", "master"))
 
     for title, description in ISSUES:
-        puts("Creating {0}".format(colored.yellow(title)))
+        puts("Creating {0!s}".format(colored.yellow(title)))
         data = {'title': title, 'body': description}
         resp = requests.post('https://api.github.com/repos/{0}/{1}/issues'.format(user, name), auth=(user, password), headers=headers, data=json.dumps(data))
 
